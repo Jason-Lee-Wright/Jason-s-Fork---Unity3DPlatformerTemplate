@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashSpeed: 20
-  dashDuration: 0.3
+  dashDuration: 0.5
   dashCooldown: 1
   airDashUpwardsForce: 0.5
   dashAudio: {fileID: 0}
