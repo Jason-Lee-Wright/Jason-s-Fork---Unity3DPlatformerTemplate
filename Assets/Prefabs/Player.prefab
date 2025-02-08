@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashSpeed: 20
-  dashDuration: 0.5
+  dashDuration: 0.3
   dashCooldown: 1
   airDashUpwardsForce: 0.5
   dashAudio: {fileID: 0}
@@ -336,7 +336,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  dashTrailColor: {r: 0.55722225, g: 0.41870406, b: 0.81886786, a: 1}
+  dashTrailColor: {r: 0, g: 0.003575325, b: 1, a: 0.7647059}
 --- !u!1 &100018
 GameObject:
   m_ObjectHideFlags: 0
