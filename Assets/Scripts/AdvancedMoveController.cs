@@ -11,7 +11,7 @@ public class AdvancedMoveController : MovementController
 {
     [Header("Ground Detection")]
     [Tooltip("Maximum stair step that the character can climb")]
-    public float maxStepClimbable = -1.0f; //Jason Wright changed this. sorry if it caused problems.
+    public float maxStepClimbable = 0.0f; //Jason Wright changed this. sorry if it caused problems.
 
     [Tooltip("Maximum slope angle (in degrees) that the character can traverse")]
     public float maxTraversableSlope = 10f;
