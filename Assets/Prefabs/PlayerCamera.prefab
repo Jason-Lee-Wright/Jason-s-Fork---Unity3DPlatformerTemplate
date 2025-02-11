@@ -111,8 +111,8 @@ MonoBehaviour:
   followTarget: {fileID: 0}
   cameraOffset: {x: 0, y: 3.5, z: 7}
   positionLerpSpeed: 6
-  orbitSpeed: 11.7
-  lookAtSpeed: 20.3
+  orbitSpeed: 30
+  lookAtSpeed: 30
   minimumDistance: 5
 --- !u!135 &13500000
 SphereCollider:
