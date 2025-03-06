@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public ThirdPersonCamera CameraFollower {get; private set;}
     private Animator characterAnimator;
     private AdvancedMoveController moveController;
+    private GlideController glideController;
     private Rigidbody rb;
     private DashController dashController;
     
@@ -30,6 +31,10 @@ public class PlayerController : MonoBehaviour
     {
         if(moveController != null)
             moveController.enabled = true;
+
+        // I saw what you did for the other move system, so I thought this check might help
+        if (glideController != null)
+            glideController.enabled = true;
     }
 
     private void OnDisable()
