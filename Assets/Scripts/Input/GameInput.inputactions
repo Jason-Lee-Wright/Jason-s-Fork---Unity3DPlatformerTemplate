@@ -25,12 +25,12 @@
                 },
                 {
                     "name": "Glide",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "480bf92e-52c4-480d-a73e-52356e22238f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Interact",

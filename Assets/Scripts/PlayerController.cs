@@ -133,11 +133,11 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Handle new Glide input
     /// </summary>
-    void OnGlide()
+    void OnGlide(InputValue value)
     {
-        if (!moveController.isGrounded)
+        if (glideController != null)
         {
-            glideController.OnGlide();
+            glideController.OnGlide(value);
         }
     }
 

@@ -17,7 +17,9 @@ public class GlideController : AdvancedMoveController
 
     [SerializeField]
     private float currentStamina;
+    [SerializeField]
     private bool isGliding;
+    [SerializeField]
     private PlayerInput playerInput;
 
     /// <summary>
@@ -43,7 +45,7 @@ public class GlideController : AdvancedMoveController
         }
         else
         {
-            StopGlide();
+            StopGlide(); // Ensure stopping happens on button release
         }
     }
 
@@ -54,7 +56,13 @@ public class GlideController : AdvancedMoveController
     {
         Debug.Log("Start Gliding");
         isGliding = true;
-        rb.velocity = new Vector3(rb.velocity.x, glideGravityScale, rb.velocity.z);
+    }
+    private void ApplyGlide()
+    {
+        if (!isGliding) return; // Stop modifying velocity if we're not gliding
+
+        // Smooth gliding effect
+        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * glideGravityScale, rb.velocity.z);
     }
 
     /// <summary>
@@ -64,6 +72,12 @@ public class GlideController : AdvancedMoveController
     {
         Debug.Log("Stop Gliding");
         isGliding = false;
+
+        // Reset vertical velocity to prevent the player from staying in the air
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        // Apply normal gravity
+        rb.useGravity = true;
     }
 
     /// <summary>
@@ -71,18 +85,29 @@ public class GlideController : AdvancedMoveController
     /// </summary>
     public override void Update()
     {
+        base.Update();
         if (isGliding)
         {
-            Debug.Log("Gliding");
+            ApplyGlide();
             currentStamina -= Time.deltaTime;
             if (currentStamina <= 0)
             {
                 StopGlide();
             }
         }
-        else if (!isGliding)
+
+        // Stop gliding if we touch the ground
+        if (isGrounded && isGliding)
         {
-            Debug.Log("Regeneration");
+            Debug.Log("Stop Glideing Please");
+            StopGlide();
+        }
+
+        // Regenerate stamina on the ground
+        if (isGrounded)
+        {
+            Debug.Log("Stop Glideing No stamina");
+            StopGlide();
             currentStamina = Mathf.Min(currentStamina + (staminaRegenRate * Time.deltaTime), maxGlideTime);
         }
     }

@@ -10513,7 +10513,15 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4481799169644692935, guid: 2f8eb7a182a04554fa925b2474164eeb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2057642792}
+    - targetCorrespondingSourceObject: {fileID: 4481799169644692935, guid: 2f8eb7a182a04554fa925b2474164eeb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2057642791}
   m_SourcePrefab: {fileID: 100100000, guid: 2f8eb7a182a04554fa925b2474164eeb, type: 3}
 --- !u!1001 &1873026618
 PrefabInstance:
@@ -11608,6 +11616,62 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 61266212}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2057642783 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4481799169644692935, guid: 2f8eb7a182a04554fa925b2474164eeb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1864306996}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &2057642791
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057642783}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &2057642792
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057642783}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2073283342
 PrefabInstance:
   m_ObjectHideFlags: 0
