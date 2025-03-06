@@ -79,10 +79,14 @@ public class AdvancedMoveController : MovementController
 
     private float currentFriction;
 
+    /// <summary>
+    /// This is my implimented code for everything stamina related
+    /// </summary>
     [SerializeField]
     private float currentStamina;
     [SerializeField]
     private GameObject StaminaBar;
+    private Vector3 StaminaBaseSize;
     private bool isGliding;
     private PlayerInput playerInput;
 
@@ -95,7 +99,8 @@ public class AdvancedMoveController : MovementController
         rb = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
         currentStamina = maxGlideTime;
-        StaminaBar = GameObject.Find("Stamina Piviot");
+        StaminaBar = GameObject.Find("Stamina piviot");
+        StaminaBaseSize = StaminaBar.transform.localScale;
     }
 
 
@@ -126,10 +131,12 @@ public class AdvancedMoveController : MovementController
                 currentStamina = 0;
             }
         }
-        if (isGrounded == true)
+        if (wasGrounded)
         {
             currentStamina = maxGlideTime;
         }
+
+        StaminaBar.transform.localScale = new Vector3(StaminaBaseSize.x, Mathf.Clamp01(currentStamina / maxGlideTime), StaminaBaseSize.z);
     }
 
     /// <summary>
