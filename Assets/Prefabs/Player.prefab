@@ -379,10 +379,10 @@ MonoBehaviour:
   onLandingPerformed:
     m_PersistentCalls:
       m_Calls: []
-  maxGlideTime: 10
+  maxGlideTime: 5
   glideGravityScale: 0.1
   staminaRegenRate: 1.5
-  currentStamina: 0
+  StaminaBar: {fileID: 0}
 --- !u!1 &100018
 GameObject:
   m_ObjectHideFlags: 0

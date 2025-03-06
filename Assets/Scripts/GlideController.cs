@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 /// <summary>
 /// Extends AdvancedMoveController with a gliding system that consumes stamina.
@@ -18,8 +19,8 @@ public class GlideController : AdvancedMoveController
     [SerializeField]
     private float currentStamina;
     [SerializeField]
+    private GameObject StaminaBar;
     private bool isGliding;
-    [SerializeField]
     private PlayerInput playerInput;
 
     /// <summary>
@@ -31,6 +32,7 @@ public class GlideController : AdvancedMoveController
         rb = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
         currentStamina = maxGlideTime;
+        StaminaBar = GameObject.Find("Stamina Piviot");
     }
 
     /// <summary>
@@ -78,6 +80,8 @@ public class GlideController : AdvancedMoveController
 
         // Apply normal gravity
         rb.useGravity = true;
+
+        currentStamina = maxGlideTime;
     }
 
     /// <summary>
@@ -86,6 +90,16 @@ public class GlideController : AdvancedMoveController
     public override void Update()
     {
         base.Update();
+
+        if (currentStamina < 0)
+        {
+            currentStamina = 0;
+        }
+        else if (currentStamina > maxGlideTime)
+        {
+            currentStamina = maxGlideTime;
+        }
+
         if (isGliding)
         {
             ApplyGlide();
@@ -93,22 +107,9 @@ public class GlideController : AdvancedMoveController
             if (currentStamina <= 0)
             {
                 StopGlide();
+
+                currentStamina = 0;
             }
-        }
-
-        // Stop gliding if we touch the ground
-        if (isGrounded && isGliding)
-        {
-            Debug.Log("Stop Glideing Please");
-            StopGlide();
-        }
-
-        // Regenerate stamina on the ground
-        if (isGrounded)
-        {
-            Debug.Log("Stop Glideing No stamina");
-            StopGlide();
-            currentStamina = Mathf.Min(currentStamina + (staminaRegenRate * Time.deltaTime), maxGlideTime);
         }
     }
 }
