@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     public ThirdPersonCamera CameraFollower {get; private set;}
     private Animator characterAnimator;
     private AdvancedMoveController moveController;
-    private GlideController glideController; // new gliding script
     private Rigidbody rb;
     private DashController dashController;
     
@@ -31,10 +30,6 @@ public class PlayerController : MonoBehaviour
     {
         if(moveController != null)
             moveController.enabled = true;
-
-        // I saw what you did for the other move system, so I thought this check might help
-        if (glideController != null)
-            glideController.enabled = true;
     }
 
     private void OnDisable()
@@ -48,12 +43,6 @@ public class PlayerController : MonoBehaviour
             moveController.UpdateMovement();
             moveController.enabled=false;
             UpdateVisualFeedback();
-        }
-
-        // Dissable glideController
-        if (glideController != null)
-        {
-            glideController.enabled = false;
         }
     }
 
@@ -76,7 +65,6 @@ public class PlayerController : MonoBehaviour
         CameraFollower = GetComponentInChildren<ThirdPersonCamera>();
         characterAnimator = GetComponentInChildren<Animator>();
         healthComponent = GetComponent<HealthController>();
-        glideController = GetComponent<GlideController>(); // the new script for gliding
 
         if (CameraFollower)
         {
@@ -135,9 +123,9 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void OnGlide(InputValue value)
     {
-        if (glideController != null)
+        if (moveController != null)
         {
-            glideController.OnGlide(value);
+            moveController.OnGlide(value);
         }
     }
 
