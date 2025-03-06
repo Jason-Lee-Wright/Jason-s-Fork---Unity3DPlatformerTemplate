@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public ThirdPersonCamera CameraFollower {get; private set;}
     private Animator characterAnimator;
     private AdvancedMoveController moveController;
-    private GlideController glideController;
+    private GlideController glideController; // new gliding script
     private Rigidbody rb;
     private DashController dashController;
     
@@ -40,15 +40,21 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         if (moveController != null)
-            {
-                inputVector = Vector3.zero;
-                moveDirection = Vector3.zero;
-                rb.velocity = Vector3.zero;
-                moveController.ApplyMovement(Vector3.zero);
-                moveController.UpdateMovement();
-                moveController.enabled=false;
-                UpdateVisualFeedback();
-            }
+        {
+            inputVector = Vector3.zero;
+            moveDirection = Vector3.zero;
+            rb.velocity = Vector3.zero;
+            moveController.ApplyMovement(Vector3.zero);
+            moveController.UpdateMovement();
+            moveController.enabled=false;
+            UpdateVisualFeedback();
+        }
+
+        // Dissable glideController
+        if (glideController != null)
+        {
+            glideController.enabled = false;
+        }
     }
 
     /// <summary>
@@ -70,6 +76,7 @@ public class PlayerController : MonoBehaviour
         CameraFollower = GetComponentInChildren<ThirdPersonCamera>();
         characterAnimator = GetComponentInChildren<Animator>();
         healthComponent = GetComponent<HealthController>();
+        glideController = GetComponent<GlideController>(); // the new script for gliding
 
         if (CameraFollower)
         {
@@ -121,6 +128,19 @@ public class PlayerController : MonoBehaviour
     {
         if (!GameManager.Instance.IsShowingPauseMenu)
             moveController.RequestJump();
+    }
+
+    /// <summary>
+    /// Handle new Glide input
+    /// </summary>
+    void OnGlide(InputValue value)
+    {
+        Debug.Log("G in player");
+
+        if (!moveController.isGrounded)
+        {
+            glideController.OnGlide(value);
+        }
     }
 
     void OnPause()

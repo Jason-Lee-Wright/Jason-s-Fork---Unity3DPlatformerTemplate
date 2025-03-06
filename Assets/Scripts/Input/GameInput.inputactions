@@ -555,32 +555,10 @@
                 {
                     "name": "",
                     "id": "0946d5ae-a2d7-4541-b035-3eecfdc7eb48",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/g",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Glide",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9a2d7354-af52-424d-8109-3aeb8c570c7d",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Glide",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2ffa0cd7-9393-467e-863a-24140ceedfc8",
-                    "path": "<Keyboard>/rightCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardSecondary",
                     "action": "Glide",
                     "isComposite": false,
                     "isPartOfComposite": false

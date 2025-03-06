@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2738380567816245834}
   - component: {fileID: -5442971658099831192}
   - component: {fileID: 6436721417596875277}
+  - component: {fileID: 1166288646193316052}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -337,6 +338,51 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   dashTrailColor: {r: 0, g: 0.003575325, b: 1, a: 0.7647059}
+--- !u!114 &1166288646193316052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c327af88964970f439a23ba3b025e381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1.8
+  maxVelocity: 9
+  Acceleration: 70
+  Friction: 7.6
+  SquashEffect: {x: 1.2, y: 0.8, z: 1.2}
+  StretchEffect: {x: 0.7, y: 1.2, z: 0.7}
+  SquashAndStretchRecoverSpeed: 12
+  maxStepClimbable: 0
+  maxTraversableSlope: 10
+  slideSpeed: 42
+  platformGripForce: 7.7
+  stompDamage: 1
+  airRotationSpeed: 0.38
+  airAcceleration: 18
+  airFriction: 1.1
+  consecutiveJumpForces:
+  - {x: 0, y: 13, z: 0}
+  - {x: 0, y: 16, z: 0}
+  - {x: 0, y: 17, z: 6}
+  chainJumpWindow: 0.1
+  jumpBufferTime: 0.17
+  jumpAudio: {fileID: 0}
+  landAudio: {fileID: 0}
+  onJumpPerformed:
+    m_PersistentCalls:
+      m_Calls: []
+  onLandingPerformed:
+    m_PersistentCalls:
+      m_Calls: []
+  maxGlideTime: 10
+  glideGravityScale: 0.1
+  staminaRegenRate: 1.5
+  currentStamina: 0
 --- !u!1 &100018
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ public class GlideController : AdvancedMoveController
     [Tooltip("Stamina regeneration rate per second after landing")]
     public float staminaRegenRate = 1.5f;
 
+    [SerializeField]
     private float currentStamina;
     private bool isGliding;
     private PlayerInput playerInput;
@@ -33,8 +34,9 @@ public class GlideController : AdvancedMoveController
     /// <summary>
     /// Handles input for starting and stopping glide.
     /// </summary>
-    void OnGlide(InputValue value)
+    public void OnGlide(InputValue value)
     {
+        Debug.Log("Starting Glide code");
         if (value.isPressed && !isGrounded && currentStamina > 0)
         {
             StartGlide();
@@ -50,8 +52,9 @@ public class GlideController : AdvancedMoveController
     /// </summary>
     private void StartGlide()
     {
+        Debug.Log("Start Gliding");
         isGliding = true;
-        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * glideGravityScale, rb.velocity.z);
+        rb.velocity = new Vector3(rb.velocity.x, glideGravityScale, rb.velocity.z);
     }
 
     /// <summary>
@@ -59,6 +62,7 @@ public class GlideController : AdvancedMoveController
     /// </summary>
     private void StopGlide()
     {
+        Debug.Log("Stop Gliding");
         isGliding = false;
     }
 
@@ -69,14 +73,16 @@ public class GlideController : AdvancedMoveController
     {
         if (isGliding)
         {
+            Debug.Log("Gliding");
             currentStamina -= Time.deltaTime;
             if (currentStamina <= 0)
             {
                 StopGlide();
             }
         }
-        else if (isGrounded)
+        else if (!isGliding)
         {
+            Debug.Log("Regeneration");
             currentStamina = Mathf.Min(currentStamina + (staminaRegenRate * Time.deltaTime), maxGlideTime);
         }
     }
